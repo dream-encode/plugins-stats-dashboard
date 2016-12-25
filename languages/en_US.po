@@ -1,0 +1,166 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Plugins Stats Dashboard\n"
+"POT-Creation-Date: 2016-12-25 18:37-0500\n"
+"PO-Revision-Date: 2016-12-25 18:42-0500\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: plugins-stats-dashboard.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Last-Translator: \n"
+"Language: en_US\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: admin/class-plugins-stats-dashboard-admin.php:203
+msgid "My Plugin Stats"
+msgstr "My Plugin Stats"
+
+#: admin/class-plugins-stats-dashboard-admin.php:229
+#: admin/class-plugins-stats-dashboard-admin.php:509
+msgid "Settings"
+msgstr "Settings"
+
+#. Plugin Name of the plugin/theme
+#: admin/class-plugins-stats-dashboard-admin.php:244
+msgid "Plugins Stats Dashboard"
+msgstr "Plugins Stats Dashboard"
+
+#: admin/class-plugins-stats-dashboard-admin.php:245
+msgid "Plugins Stats Dashboard Settings"
+msgstr "Plugins Stats Dashboard Settings"
+
+#: admin/class-plugins-stats-dashboard-admin.php:426
+msgid "Upload an image"
+msgstr "Upload an image"
+
+#: admin/class-plugins-stats-dashboard-admin.php:426
+msgid "Use image"
+msgstr "Use image"
+
+#: admin/class-plugins-stats-dashboard-admin.php:426
+msgid "Upload new image"
+msgstr "Upload new image"
+
+#: admin/class-plugins-stats-dashboard-admin.php:427
+msgid "Remove image"
+msgstr "Remove image"
+
+#: admin/class-plugins-stats-dashboard-admin.php:497
+#: admin/class-plugins-stats-dashboard-admin.php:510
+msgid "Settings for Plugins Stats Dashboard plugin."
+msgstr "Settings for Plugins Stats Dashboard plugin."
+
+#: admin/class-plugins-stats-dashboard-admin.php:515
+msgid "Author"
+msgstr "Author"
+
+#: admin/class-plugins-stats-dashboard-admin.php:521
+msgid "WordPress.org username for the plugin author."
+msgstr "WordPress.org username for the plugin author."
+
+#: admin/class-plugins-stats-dashboard-admin.php:526
+msgid "Update Frequency"
+msgstr "Update Frequency"
+
+#: admin/class-plugins-stats-dashboard-admin.php:533
+msgid "How often should stats from WordPress.org be refreshed?."
+msgstr "How often should stats from WordPress.org be refreshed?."
+
+#: admin/class-plugins-stats-dashboard-admin.php:591
+msgid "Downloads"
+msgstr "Downloads"
+
+#: admin/class-plugins-stats-dashboard-admin.php:592
+msgid "Active Installs"
+msgstr "Active Installs"
+
+#: admin/class-plugins-stats-dashboard-admin.php:593
+msgid "Version"
+msgstr "Version"
+
+#: admin/class-plugins-stats-dashboard-admin.php:603
+msgid "5 Minutes"
+msgstr "5 Minutes"
+
+#: admin/class-plugins-stats-dashboard-admin.php:604
+msgid "15 Minutes"
+msgstr "15 Minutes"
+
+#: admin/class-plugins-stats-dashboard-admin.php:605
+msgid "30 Minutes"
+msgstr "30 Minutes"
+
+#: admin/class-plugins-stats-dashboard-admin.php:606
+msgid "1 Hour"
+msgstr "1 Hour"
+
+#: admin/class-plugins-stats-dashboard-admin.php:607
+msgid "6 Hours"
+msgstr "6 Hours"
+
+#: admin/class-plugins-stats-dashboard-admin.php:608
+msgid "12 Hours"
+msgstr "12 Hours"
+
+#: admin/class-plugins-stats-dashboard-admin.php:609
+msgid "24 Hours"
+msgstr "24 Hours"
+
+#: admin/class-plugins-stats-dashboard-admin.php:610
+msgid "7 Days"
+msgstr "7 Days"
+
+#: admin/class-plugins-stats-dashboard-admin.php:621
+msgid "*Updated Every"
+msgstr "*Updated Every"
+
+#: admin/class-plugins-stats-dashboard-admin.php:625
+#, php-format
+msgid "Minute"
+msgid_plural "%s Minutes"
+msgstr[0] "Minute"
+msgstr[1] "%s Minutes"
+
+#: admin/class-plugins-stats-dashboard-admin.php:628
+#, php-format
+msgid "Hour"
+msgid_plural "%s Hours"
+msgstr[0] "Hour"
+msgstr[1] "%s Hours"
+
+#: admin/class-plugins-stats-dashboard-admin.php:631
+#, php-format
+msgid "Day"
+msgid_plural "%s Days"
+msgstr[0] "Day"
+msgstr[1] "%s Days"
+
+#: admin/partials/plugins-stats-dashboard-widget.php:20
+msgid "Plugin"
+msgstr "Plugin"
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "https://dream-encode.com"
+msgstr "https://dream-encode.com"
+
+#. Description of the plugin/theme
+msgid ""
+"Dashboard widget to display plugin stats from WordPress.org for a specific "
+"author."
+msgstr ""
+"Dashboard widget to display plugin stats from WordPress.org for a specific "
+"author."
+
+#. Author of the plugin/theme
+msgid "David Baumwald"
+msgstr "David Baumwald"
