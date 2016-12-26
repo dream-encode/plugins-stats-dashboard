@@ -93,7 +93,13 @@ class Plugins_Stats_Dashboard_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/dist/css/plugins-stats-dashboard-admin.css', array(), $this->version, 'all' );
+
+		$screen = get_current_screen();						
+
+		if ( $screen->id == "dashboard" ) {
+			wp_enqueue_style( $this->plugin_name.'-progress-bar', plugin_dir_url( __FILE__ ) . '../vendor/nprogress/nprogress.css', array(), $this->version, 'all' );
+			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/dist/css/plugins-stats-dashboard-admin.css', array(), $this->version, 'all' );
+		}
 
 	}
 
@@ -104,29 +110,18 @@ class Plugins_Stats_Dashboard_Admin {
 	 */
 	public function enqueue_scripts() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Plugins_Stats_Dashboard_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Plugins_Stats_Dashboard_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-		if ( is_admin() ) {			
-			$screen = get_current_screen();						
+		$screen = get_current_screen();						
 
-			if ( $screen -> id == "dashboard" ) {
-				wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/dist/js/plugins-stats-dashboard-admin.js', array( 'jquery' ), $this->version, false );
+		if ( $screen->id == "dashboard" ) {
+			wp_enqueue_script( $this->plugin_name.'-progress-bar', plugin_dir_url( __FILE__ ) . '../vendor/nprogress/nprogress.js', array( 'jquery' ), $this->version, false );
 
-				$params = array(
-  					'security' => wp_create_nonce( $this->plugin_name.'-admin' ),
-				);
+			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/dist/js/plugins-stats-dashboard-admin.js', array( 'jquery', $this->plugin_name.'-progress-bar' ), $this->version, false );
 
-				wp_localize_script( $this->plugin_name, 'ajax_object', $params );
-			}
+			$params = array(
+  				'security' => wp_create_nonce( $this->plugin_name.'-admin' ),
+			);
+
+			wp_localize_script( $this->plugin_name, 'ajax_object', $params );
 		}
 	}
 
@@ -151,7 +146,7 @@ class Plugins_Stats_Dashboard_Admin {
 	public function updated_option( $option_name, $old_value, $value ) {
 	
 		if ( $option_name == $this->plugin_name ) {
-			delete_transient( 'plugins_stats_dashboard_results' );
+			delete_transient( 'plugins-stats-dashboard-results' );
 		}
 	
 	}
@@ -242,7 +237,7 @@ class Plugins_Stats_Dashboard_Admin {
 
 		add_menu_page( 
 			__( 'Plugins Stats Dashboard', $this->plugin_name ),
-			__( 'Plugins Stats Dashboard Settings', $this->plugin_name ),
+			__( 'Plugins Stats Dashboard', $this->plugin_name ),
 			'manage_options', 
 			$this->plugin_name,
 			array( $this, 'settings_view' ),
@@ -475,7 +470,7 @@ class Plugins_Stats_Dashboard_Admin {
 			$choices_html .= '<option value="'.esc_attr( $id ).'"';				
 			
 			if ( $is_selected !== false ) {				
-				$choices_html .= ' data-i="'.(int)$is_selected.'" selected';					
+				$choices_html .= ' data-i="'.(int) $is_selected.'" selected';					
 			}			
 			
 			$choices_html .= '>'.$value.'</option>';			
@@ -493,7 +488,7 @@ class Plugins_Stats_Dashboard_Admin {
 	 * @return 	string
 	 */
 	
-	function settings_section_callback($args) {
+	function settings_section_callback( $args ) {
 		echo wpautop( __( 'Settings for Plugins Stats Dashboard plugin.', $this->plugin_name ) );
 	}
 
@@ -616,19 +611,19 @@ class Plugins_Stats_Dashboard_Admin {
 
 	protected function update_frequency_text() {
 
-		preg_match_all( "/^(\d+)(m|h|d)$/i", $this->options['update_frequency'], $matches );
+		preg_match( "/^(\d+)(m|h|d)$/i", $this->options['update_frequency'], $matches );
 
-		$update_frequency_text = __( '*Updated Every', $this->plugin_name );
+		$update_frequency_text = __( '*Updated every ', $this->plugin_name );
 
-		switch ($matches[2]) {
+		switch ( $matches[2] ) {
 			case 'm':
-				$update_frequency_text .= sprintf( _n( 'Minute', '%s Minutes', $matches[1], $this->plugin_name ), $matches[1] );
+				$update_frequency_text .= sprintf( _n( 'minute', '%s minutes', $matches[1], $this->plugin_name ), $matches[1] );
 				break;
 			case 'h':
-				$update_frequency_text .= sprintf( _n( 'Hour', '%s Hours', $matches[1], $this->plugin_name ), $matches[1] );
+				$update_frequency_text .= sprintf( _n( 'hour', '%s hours', $matches[1], $this->plugin_name ), $matches[1] );
 				break;
 			case 'd':
-				$update_frequency_text .= sprintf( _n( 'Day', '%s Days', $matches[1], $this->plugin_name ), $matches[1] );
+				$update_frequency_text .= sprintf( _n( 'day', '%s days', $matches[1], $this->plugin_name ), $matches[1] );
 				break;
 		}
 
@@ -638,9 +633,9 @@ class Plugins_Stats_Dashboard_Admin {
 
 	protected function results_transient_length() {
 
-		preg_match_all( "/^(\d+)(m|h|d)$/i", $this->options['update_frequency'], $matches );
+		preg_match( "/^(\d+)(m|h|d)$/i", $this->options['update_frequency'], $matches );
 
-		switch ($matches[2]) {
+		switch ( $matches[2] ) {
 			case 'm':
 				$results_transient_length = MINUTE_IN_SECONDS*intval($matches[1]);
 				break;

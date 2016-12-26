@@ -36,7 +36,7 @@ class Plugins_Stats_Dashboard_Activator {
 			'update_frequency' => '1h'
 		);
 
-		add_option( $this->plugin_name );
+		add_option( 'plugins-stats-dashboard', $option_values );
 
 	}
 

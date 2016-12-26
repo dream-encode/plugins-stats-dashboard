@@ -12,6 +12,8 @@
  */
 ?>
 
+<div id="plugins-stats-dashboard-progress-bar"></div>
+
 <?php echo do_action( 'de/'.$this->plugin_name.'/dashboard_widget_before_plugins_table' ); ?>
 
 <table class="plugin-stats-dashboard-list-table">

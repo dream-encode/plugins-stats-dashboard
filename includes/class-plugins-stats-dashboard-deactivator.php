@@ -31,10 +31,10 @@ class Plugins_Stats_Dashboard_Deactivator {
 	 */
 	public static function deactivate() {
 
-		remove_option( $this->plugin_name );
+		delete_option( 'plugins-stats-dashboard' );
 
-		delete_transient( $this->plugin_name.'-results' );
-		delete_transient( $this->plugin_name.'-current-stat' );
+		delete_transient( 'plugins-stats-dashboard-results' );
+		delete_transient( 'plugins-stats-dashboard-current-stat' );
 		
 	}
 

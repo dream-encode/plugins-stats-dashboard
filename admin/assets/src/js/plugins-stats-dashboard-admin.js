@@ -1,29 +1,29 @@
 (function( $ ) {
 	'use strict';
 
-	// Credit for ucFirst: https://jsfiddle.net/gabrieleromanato/vBBnR/
-	 $.ucfirst = function(str) {
-        var text = str;
+	// Inspired by http://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+	 $.commaSeparateNumber = function(value) {
+        var parts = value.toString().split(".");
 
-        var parts = text.split(' '),
-            len = parts.length,
-            i, words = [];
+    	parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-        for (i = 0; i < len; i++) {
-            var part = parts[i];
-            var first = part[0].toUpperCase();
-            var rest = part.substring(1, part.length);
-            var word = first + rest;
-
-            words.push(word);
-        }
-
-        return words.join(' ');
+    	return parts.join(".");
     };
 
 	 var PSD = {
-	 	load: function(){
-			$tbody.html('');
+	 	load: function(){	
+	 		NProgress.configure({
+				parent : "#plugins-stats-dashboard-progress-bar",
+				showSpinner : false
+			});			
+	 				
+	 		var $tbody = $('#plugin-stats-dashboard.postbox TABLE.plugin-stats-dashboard-list-table TBODY');
+
+			$tbody.hide('fast', function(){
+				$(this).html('');
+			});
+
+			NProgress.start();
 			
 	 		var current_stat = $('#plugins-stats-dashboard-stat-option').val();
 
@@ -36,17 +36,23 @@
 					if (json.error) {
 						console.log("Error loading stats.");
 					} else {
-						var $tbody = $('#plugin-stats-dashboard.postbox TABLE.plugin-stats-dashboard-list-table TBODY');
+						var count = json.plugins.length;
 
 						$.each(json.plugins, function(i, plugin) {
+							var $row = $('<tr>'),
+								stat = current_stat == 'version' ? plugin[current_stat] : $.commaSeparateNumber(plugin[current_stat]);
 
-							var $row = $('<tr>');
-
-							$row.append($('<td>').append($('<a>').prop({href: plugin.link, target: '_blank'}).text(plugin.name)));
-							$row.append($('<td>').prop('align', 'right').text(plugin[current_stat]));
+							$row.append($('<td>').append($('<a>').prop({href: plugin.homepage, target: '_blank'}).html(plugin.name)));
+							$row.append($('<td>').prop('align', 'right').text(stat));
 
 							$tbody.append($row);
+
+							NProgress.set(count/100);
 						});
+
+						NProgress.done();
+
+						$tbody.show('fast');
 					}
 				}
 			});			
