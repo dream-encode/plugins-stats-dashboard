@@ -11,7 +11,7 @@ Adds a dashboard widget that grabs plugin statistics from the WordPress.org Plug
 
 == Description ==
 
-This plugin adds a new widget to the admin dashboard that displays simple plugin stats from WordPress.org for a given author.  Stats like downloads, active installs, and current version are displayed for each plugin for the designated author. 
+This plugin adds a new widget to the admin dashboard that displays simple plugin stats from WordPress.org for a given author.  Stats like downloads, active installs, and current version are displayed for each plugin for the designated author.
 
 == Installation ==
 
